@@ -13,13 +13,13 @@ import openai
 
 
 def _add_prompt_caching(messages: List[Dict[str, Any]], model_name: str) -> List[Dict[str, Any]]:
-    if not ("minimax" in model_name.lower() or "claude" in model_name.lower()):
+    if not ("qwen3.5" in model_name.lower() or "qwen3.6" in model_name.lower()):
         return messages
 
     cached_messages = copy.deepcopy(messages)
 
     for n in range(len(cached_messages)):
-        if n < len(cached_messages) - 4:
+        if n < len(cached_messages) - 19:
             continue
         msg = cached_messages[n]
         if not isinstance(msg, dict):
